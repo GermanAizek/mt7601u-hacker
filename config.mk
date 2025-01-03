@@ -1319,8 +1319,8 @@ ifeq ($(PLATFORM),PC)
 	CFLAGS := -D__KERNEL__ -I$(LINUX_SRC)/include -O2 -fomit-frame-pointer -fno-strict-aliasing -fno-common -pipe -mpreferred-stack-boundary=2 -march=i686 -DMODULE -DMODVERSIONS -include $(LINUX_SRC)/include/linux/modversions.h $(WFLAGS)
 	export CFLAGS
     else
-	# Linux 2.6
-	EXTRA_CFLAGS := $(WFLAGS) 
+	# Linux 2.6 and newer versions
+	EXTRA_CFLAGS := $(WFLAGS) -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-unused-variable
     endif
 endif
 
