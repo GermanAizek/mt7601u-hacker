@@ -50,9 +50,9 @@
 /* load firmware */
 #define __KERNEL_SYSCALLS__
 #include <linux/unistd.h>
-#include <asm/uaccess.h>
-#include <asm/types.h>
-#include <asm/unaligned.h>	/* for get_unaligned() */
+#include <linux/uaccess.h>
+#include <linux/types.h>
+#include <linux/unaligned.h>	/* for get_unaligned() */
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,27)
 #include <linux/pid.h>
@@ -175,8 +175,8 @@ extern	const struct iw_handler_def rt28xx_ap_iw_handler_def;
 /***********************************************************************************
  *	Compiler related definitions
  ***********************************************************************************/
-#undef __inline
-#define __inline		static inline
+//#undef __inline
+//#define __inline		static inline
 #define IN
 #define OUT
 #define INOUT
@@ -306,12 +306,14 @@ struct iw_statistics *rt28xx_get_wireless_stats(
  ***********************************************************************************/
 typedef struct file* RTMP_OS_FD;
 
+/*
 typedef struct _OS_FS_INFO_
 {
 	int				fsuid;
 	int				fsgid;
 	mm_segment_t	fs;
 } OS_FS_INFO;
+*/
 
 #define IS_FILE_OPEN_ERR(_fd) 	((_fd == NULL) || IS_ERR((_fd)))
 
