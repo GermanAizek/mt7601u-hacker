@@ -1320,7 +1320,7 @@ ifeq ($(PLATFORM),PC)
 	export CFLAGS
     else
 	# Linux 2.6 and newer versions
-	EXTRA_CFLAGS := $(WFLAGS) -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-unused-variable
+	EXTRA_CFLAGS := $(WFLAGS) -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-unused-variable -Wno-int-conversion -Wno-date-time
     endif
 endif
 
