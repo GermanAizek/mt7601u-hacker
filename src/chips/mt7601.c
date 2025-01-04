@@ -6,6 +6,7 @@
  * Hsin-chu, Taiwan, R.O.C.
  *
  * (c) Copyright 2002-2004, Ralink Technology, Inc.
+ * (c) Copyright 2025, Herman Semenov <GermanAizek@yandex.ru>
  *
  * All rights reserved. Ralink's source code is an unpublished work and the
  * use of a copyright notice does not imply otherwise. This source code
@@ -22,8 +23,9 @@
 	Specific funcitons and configurations for MT7601 (RT63xx)
 
 	Revision History:
-	Who         When          What
-	--------    ----------    ----------------------------------------------
+	Who            When             What
+	--------       ----------       ----------------------------------------------
+	Herman Semenov 2025-01-04       upgraded to linux kernel 6.x and bugfixes
 */
 
 #ifdef MT7601
@@ -1429,7 +1431,7 @@ NTSTATUS MT7601DisableTxRx(
 	UINT32 MaxRetry;
 
 	if (!IS_MT7601(pAd))
-		return;
+		return STATUS_UNSUCCESSFUL;
 
 	DBGPRINT(RT_DEBUG_TRACE, ("----> %s\n", __FUNCTION__));
 

@@ -6,6 +6,7 @@
  * Hsin-chu, Taiwan, R.O.C.
  *
  * (c) Copyright 2002-2004, Ralink Technology, Inc.
+ * (c) Copyright 2025, Herman Semenov <GermanAizek@yandex.ru>
  *
  * All rights reserved. Ralink's source code is an unpublished work and the
  * use of a copyright notice does not imply otherwise. This source code
@@ -21,8 +22,9 @@
 	Abstract:
 
 	Revision History:
-	Who         When          What
-	--------    ----------    ----------------------------------------------
+	Who            When             What
+	--------       ----------       ----------------------------------------------
+	German Semenov 2025-01-04    upgraded to linux kernel 6.x and bugfixes
 */
 
 
@@ -30,15 +32,20 @@
 
 INT MCUBurstWrite(PRTMP_ADAPTER pAd, UINT32 Offset, UINT32 *Data, UINT32 Cnt)
 {
-	RTUSBMultiWrite_nBytes(pAd, Offset, Data, Cnt * 4, 64); 
+	return RTUSBMultiWrite_nBytes(pAd, Offset, Data, Cnt * 4, 64); 
 }
 
 INT MCURandomWrite(PRTMP_ADAPTER pAd, RTMP_REG_PAIR *RegPair, UINT32 Num)
 {
 	UINT32 Index;
+	INT ret;
 	
 	for (Index = 0; Index < Num; Index++)
-		RTMP_IO_WRITE32(pAd, RegPair->Register, RegPair->Value);
+		ret = RTMP_IO_WRITE32(pAd, RegPair->Register, RegPair->Value);
+
+    // BUGFIX: return last NTSTATUS RTMP_IO_WRITE32() maybe ...
+	// <GermanAizek@yandex.ru> Is this correct? it can still check returned code NTSTATUS every step in loop and if not SUCCEED, then return failed
+	return ret;
 }
 
 VOID ChipOpsMCUHook(PRTMP_ADAPTER pAd, enum MCU_TYPE MCUType)
