@@ -306,14 +306,20 @@ struct iw_statistics *rt28xx_get_wireless_stats(
  ***********************************************************************************/
 typedef struct file* RTMP_OS_FD;
 
-/*
 typedef struct _OS_FS_INFO_
 {
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,5,0)
+	kuid_t			fsuid;
+	kgid_t			fsgid;
+#else
 	int				fsuid;
 	int				fsgid;
+#endif
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5,18,0)
 	mm_segment_t	fs;
+#endif
 } OS_FS_INFO;
-*/
 
 #define IS_FILE_OPEN_ERR(_fd) 	((_fd == NULL) || IS_ERR((_fd)))
 
@@ -523,7 +529,7 @@ do { \
 #define	THREAD_PID_INIT_VALUE	NULL
 /* TODO: Use this IOCTL carefully when linux kernel version larger than 2.6.27, because the PID only correct when the user space task do this ioctl itself. */
 /*#define RTMP_GET_OS_PID(_x, _y)    _x = get_task_pid(current, PIDTYPE_PID); */
-#define RT_GET_OS_PID(_x, _y)		do{rcu_read_lock(); _x=(ULONG)current->pids[PIDTYPE_PID].pid; rcu_read_unlock();}while(0)
+#define RT_GET_OS_PID(_x, _y)		do{rcu_read_lock(); _x=(ULONG)current->thread_pid; rcu_read_unlock();}while(0)
 #ifdef OS_ABL_FUNC_SUPPORT
 #define RTMP_GET_OS_PID(_a, _b)			RtmpOsGetPid(&_a, _b)
 #else

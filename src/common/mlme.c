@@ -28,7 +28,7 @@
 */
 
 #include "rt_config.h"
-#include <stdarg.h>
+#include <linux/stdarg.h>
 
 
 UCHAR CISCO_OUI[] = {0x00, 0x40, 0x96};
