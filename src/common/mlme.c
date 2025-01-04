@@ -6,6 +6,7 @@
  * Hsin-chu, Taiwan, R.O.C.
  *
  * (c) Copyright 2002-2004, Ralink Technology, Inc.
+ * (c) Copyright 2025, Herman Semenov <GermanAizek@yandex.ru>
  *
  * All rights reserved.	Ralink's source	code is	an unpublished work	and	the
  * use of a	copyright notice does not imply	otherwise. This	source code
@@ -21,10 +22,11 @@
 	Abstract:
 
 	Revision History:
-	Who			When			What
-	--------	----------		----------------------------------------------
-	John Chang	2004-08-25		Modify from RT2500 code base
-	John Chang	2004-09-06		modified for RT2600
+	Who			   When			What
+	--------	   ----------		----------------------------------------------
+	John Chang	   2004-08-25		Modify from RT2500 code base
+	John Chang	   2004-09-06		modified for RT2600
+	Herman Semenov 2025-01-04       upgraded to linux kernel 6.x and bugfixes
 */
 
 #include "rt_config.h"

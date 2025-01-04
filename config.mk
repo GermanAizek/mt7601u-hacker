@@ -1,3 +1,13 @@
+#
+#   * (c) Copyright 2025, Herman Semenov <GermanAizek@yandex.ru>
+#
+#	Revision History:
+#	Who            When             What
+#	--------       ----------       ----------------------------------------------
+#	German Semenov 2025-01-04       upgraded to linux kernel 6.x and bugfixes
+#
+
+
 # Support ATE function
 HAS_ATE=y
 

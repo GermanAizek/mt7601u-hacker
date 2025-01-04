@@ -4,6 +4,7 @@
  * Science-based Industrial Park
  * Hsin-chu, Taiwan, R.O.C.
  * (c) Copyright 2002, Ralink Technology, Inc.
+ * (c) Copyright 2025, Herman Semenov <GermanAizek@yandex.ru>
  *
  * All rights reserved. Ralink's source code is an unpublished work and the
  * use of a copyright notice does not imply otherwise. This source code
@@ -24,8 +25,9 @@
 	No any OS related definition/MACRO is defined here.
 
     Revision History:
-    Who          When          What
-    ---------    ----------    ----------------------------------------------
+    Who            When          What
+    ---------      ----------    ----------------------------------------------
+	Herman Semenov 2025-01-04    upgraded to linux kernel 6.x and bugfixes
 */
 
 /* same as rt_linux.h to warn users the two files can not be used simultaneously */
