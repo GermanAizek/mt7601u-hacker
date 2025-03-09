@@ -106,7 +106,7 @@ typedef VOID	pregs;
 /***********************************************************************************
  *	Compiler related definitions
  ***********************************************************************************/
-#undef __inline
+//#undef __inline
 //#define __inline		static inline
 #define IN
 #define OUT
