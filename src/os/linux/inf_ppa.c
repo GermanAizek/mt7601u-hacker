@@ -34,6 +34,10 @@
 #include <linux/skbuff.h>
 #include <linux/netdevice.h>
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
+
 extern INT rt28xx_send_packets(
 	IN struct sk_buff		*skb_p,
 	IN struct net_device	*net_dev);

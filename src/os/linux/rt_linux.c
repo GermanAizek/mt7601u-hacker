@@ -64,6 +64,10 @@
 #define RT_CONFIG_IF_OPMODE_ON_STA(__OpMode)
 #endif
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
+
 ULONG RTDebugLevel = RT_DEBUG_ERROR;
 ULONG RTDebugFunc = 0;
 

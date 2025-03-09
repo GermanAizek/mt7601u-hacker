@@ -35,7 +35,9 @@
 #define CFG80211DBG(__Flg, __pMsg)
 #endif /* RT_CFG80211_DEBUG */
 
-
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
 
 
 INT CFG80211DRV_IoctlHandle(

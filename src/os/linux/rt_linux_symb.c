@@ -9,6 +9,7 @@
     Revision History:
     Who        When          What
     ---------  ----------    ----------------------------------------------
+    GermanAizek@yandex.ru 10.03.2025 MODULE_LICENSE for newer Linux Kernel 6.x
 
 ***************************************************************************/
 
@@ -20,7 +21,9 @@
 #include "rtmp_osabl.h"
 #include "rt_os_util.h"
 
-
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
 #ifdef OS_ABL_FUNC_SUPPORT
 
 EXPORT_SYMBOL(RTDebugLevel);

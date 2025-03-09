@@ -33,6 +33,10 @@
 
 #include "rt_config.h"
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
+
 int wl_proc_init(void);
 int wl_proc_exit(void);
 

@@ -26,6 +26,9 @@
 #include <linux/netdevice.h>
 #include <netpro/apprehdr.h>
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
 
 #ifdef IKANOS_VX_1X0
 

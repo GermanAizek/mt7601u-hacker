@@ -12,5 +12,7 @@
  * written consent of Ralink Technology, Inc. is obtained.
  ***************************************************************************/
 
-
+ #ifdef OS_ABL_SUPPORT
+ MODULE_LICENSE("GPL");
+ #endif /* OS_ABL_SUPPORT */
 

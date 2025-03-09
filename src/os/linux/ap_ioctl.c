@@ -31,6 +31,10 @@
 #include "rt_os_net.h"
 #include <linux/wireless.h>
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
+
 struct iw_priv_args ap_privtab[] = {
 { RTPRIV_IOCTL_SET, 
 /* 1024 --> 1024 + 512 */

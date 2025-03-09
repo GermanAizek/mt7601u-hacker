@@ -30,6 +30,9 @@
 #include "rt_os_util.h"
 #include "rt_os_net.h"
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
 
 /* module table */
 USB_DEVICE_ID rtusb_dev_id[] = {

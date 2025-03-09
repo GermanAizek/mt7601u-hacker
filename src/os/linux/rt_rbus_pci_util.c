@@ -20,5 +20,7 @@
 #include "rtmp_osabl.h"
 #include "rt_os_util.h"
 
-
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
 

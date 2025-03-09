@@ -35,6 +35,10 @@
 #include "rt_os_net.h"
 /*#include	"rt_config.h" */
 
+#ifdef OS_ABL_SUPPORT
+MODULE_LICENSE("GPL");
+#endif /* OS_ABL_SUPPORT */
+
 #ifdef DBG
 extern ULONG RTDebugLevel;
 extern ULONG RTDebugFunc;
