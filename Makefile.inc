@@ -8,9 +8,6 @@ ifeq ($(TARGET),)
 TARGET = LINUX
 endif
 
-# linux newer 6.12
-CONFIG_DEBUG_BUGVERBOSE := 0
-
 ifeq ($(CHIPSET),)
 CHIPSET = 7601U
 endif

@@ -1,5 +1,5 @@
 #!/bin/sh
 ifconfig ra0 down
-rmmod mtnet7601Usta
-rmmod mt7601Usta
-rmmod mtutil7601Usta
+sudo rmmod mtnet7601Usta
+sudo rmmod mt7601Usta
+sudo rmmod mtutil7601Usta
