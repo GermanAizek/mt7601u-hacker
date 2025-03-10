@@ -45,6 +45,7 @@
 #include "rtmp_comm.h"
 #include "rtmp_osabl.h"
 #include "rt_os_util.h"
+#include "rt_os_net.h"
 #include <linux/rtnetlink.h>
 
 #if defined(CONFIG_RA_HW_NAT) || defined(CONFIG_RA_HW_NAT_MODULE)
@@ -93,6 +94,49 @@ OS_NDIS_SPIN_LOCK UtilSemLock;
 
 BOOLEAN RTMP_OS_Alloc_RscOnly(VOID *pRscSrc, UINT32 RscLen);
 BOOLEAN RTMP_OS_Remove_Rsc(LIST_HEADER *pRscList, VOID *pRscSrc);
+
+
+#if WIRELESS_EXT >= 12
+/* This function will be called when query /proc */
+struct iw_statistics *rt28xx_get_wireless_stats(struct net_device *net_dev)
+{
+	VOID *pAd = NULL;
+	struct iw_statistics *pStats;
+	RT_CMD_IW_STATS DrvIwStats, *pDrvIwStats = &DrvIwStats;
+
+
+	GET_PAD_FROM_NET_DEV(pAd, net_dev);	
+
+
+#ifdef P2P_SUPPORT
+#endif /* P2P_SUPPORT */
+	DBGPRINT(RT_DEBUG_TRACE, ("rt28xx_get_wireless_stats --->\n"));
+
+
+	pDrvIwStats->priv_flags = RT_DEV_PRIV_FLAGS_GET(net_dev);
+	pDrvIwStats->dev_addr = (PUCHAR)net_dev->dev_addr;
+
+	if (RTMP_DRIVER_IW_STATS_GET(pAd, pDrvIwStats) != NDIS_STATUS_SUCCESS)
+		return NULL;
+
+	pStats = (struct iw_statistics *)(pDrvIwStats->pStats);
+	pStats->status = 0; /* Status - device dependent for now */
+
+
+	pStats->qual.updated = 1;     /* Flags to know if updated */
+#ifdef IW_QUAL_DBM
+	pStats->qual.updated |= IW_QUAL_DBM;	/* Level + Noise are dBm */
+#endif /* IW_QUAL_DBM */
+	pStats->qual.qual = pDrvIwStats->qual;
+	pStats->qual.level = pDrvIwStats->level;
+	pStats->qual.noise = pDrvIwStats->noise;
+	pStats->discard.nwid = 0;     /* Rx : Wrong nwid/essid */
+	pStats->miss.beacon = 0;      /* Missed beacons/superframe */
+	
+	DBGPRINT(RT_DEBUG_TRACE, ("<--- rt28xx_get_wireless_stats\n"));
+	return pStats;
+}
+#endif /* WIRELESS_EXT */
 
 /*
 ========================================================================
