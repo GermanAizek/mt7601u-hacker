@@ -19,8 +19,11 @@
 #include "rtmp_comm.h"
 #include "rtmp_osabl.h"
 #include "rt_os_util.h"
+#include "rt_os_net.h"
 
 #ifdef OS_ABL_SUPPORT
 MODULE_LICENSE("GPL");
 #endif /* OS_ABL_SUPPORT */
+
+RTMP_DRV_ABL_OPS RtmpDrvOps, *pRtmpDrvOps = &RtmpDrvOps;
 

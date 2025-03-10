@@ -7,9 +7,6 @@
 #	German Semenov 2025-01-04       upgraded to linux kernel 6.x and bugfixes
 #
 
-#OS ABL - YES or NO
-OSABL = YES
-
 # Support ATE function
 HAS_ATE=y
 
